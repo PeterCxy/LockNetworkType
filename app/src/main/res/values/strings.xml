@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">LockNetworkType</string>
+	<string name="app_name">LockNetworkType</string>
+
+	<string name="lock">Lock!</string>
+	<string name="tip">New network type is set. You might need to turn on/off airplane mode for it to take effect.</string>
+
+	<!-- Array from platform/packages/apps/Settings/src/com/android/settings/RadioInfo.java -->
+	<string-array name="networks">
+		<item>WCDMA preferred</item>
+		<item>GSM only</item>
+		<item>WCDMA only</item>
+		<item>GSM auto (PRL)</item>
+		<item>CDMA auto (PRL)</item>
+		<item>CDMA only</item>
+		<item>EvDo only</item>
+		<item>GSM/CDMA auto (PRL)</item>
+		<item>LTE/CDMA auto (PRL)</item>
+		<item>LTE/GSM auto (PRL)</item>
+		<item>LTE/GSM/CDMA auto (PRL)</item>
+		<item>LTE only</item>
+		<item>LTE/WCDMA</item>
+		<item>TD-SCDMA only</item>
+		<item>TD-SCDMA and WCDMA</item>
+		<item>TD-SCDMA and LTE</item>
+		<item>TD-SCDMA and GSM</item>
+		<item>TD-SCDMA,GSM and LTE</item>
+		<item>TD-SCDMA, GSM/WCDMA</item>
+		<item>TD-SCDMA, WCDMA and LTE</item>
+		<item>TD-SCDMA, GSM/WCDMA and LTE</item>
+		<item>TD-SCDMA, GSM/WCDMA, CDMA and EvDo</item>
+		<item>TD-SCDMA, LTE, CDMA, EvDo GSM/WCDMA</item>
+	</string-array>
 
 </resources>
