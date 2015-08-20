@@ -2,4 +2,6 @@ bin/
 gen/
 obj/
 libs/*/*.so
+.gradle
+build
 
