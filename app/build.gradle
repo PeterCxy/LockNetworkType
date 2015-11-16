@@ -1,18 +1,24 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 21
+    compileSdkVersion 23
     buildToolsVersion "21.1.2"
 
     defaultConfig {
         applicationId "net.typeblog.netlock"
         minSdkVersion 21
         targetSdkVersion 21
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
     }
+
+	signingConfigs {
+		release
+	}
+
     buildTypes {
         release {
+			signingConfig signingConfigs.release
             //runProguard false
             //proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -21,4 +27,32 @@ android {
 
 dependencies {
     provided files("libs/XposedBridgeApi.jar")
+}
+
+def propFile = file('../signing.properties')
+if( propFile.canRead() ) {
+  def Properties p = new Properties()
+  p.load(new FileInputStream(propFile))
+
+  if( p!=null
+  &&  p.containsKey('STORE_FILE')
+  &&  p.containsKey('STORE_PASSWORD')
+  &&  p.containsKey('KEY_ALIAS')
+  &&  p.containsKey('KEY_PASSWORD')
+  ) {
+    println "RELEASE_BUILD: Signing..."
+
+    android.signingConfigs.release.storeFile = file( p['STORE_FILE'] )
+    android.signingConfigs.release.storePassword = p['STORE_PASSWORD']
+    android.signingConfigs.release.keyAlias = p['KEY_ALIAS']
+    android.signingConfigs.release.keyPassword = p['KEY_PASSWORD']
+
+  } else {
+    println "RELEASE_BUILD: Required properties in signing.properties are missing"
+    android.buildTypes.release.signingConfig = null
+  }
+
+} else {
+  println "RELEASE_BUILD: signing.properties not found"
+  android.buildTypes.release.signingConfig = null
 }

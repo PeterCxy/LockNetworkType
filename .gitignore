@@ -4,4 +4,6 @@ obj/
 libs/*/*.so
 .gradle
 build
+*.iml
+signing.properties
 
